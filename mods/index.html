@@ -36,7 +36,12 @@
   }
   .nav a:hover, .nav a.active { background: var(--accent); border-color: transparent; }
   h1 { text-align: center; font-size: 30px; margin-bottom: 8px; }
-  .sub { text-align: center; color: var(--muted); margin-bottom: 36px; }
+  .sub { text-align: center; color: var(--muted); margin-bottom: 20px; }
+  .old-toggle { display: block; margin: 0 auto 20px; padding: 8px 22px; border-radius: 999px; border: 1px solid var(--border); background: rgba(255,255,255,.05); color: var(--muted); font-size: 13px; cursor: pointer; transition: .2s; }
+  .old-toggle:hover { border-color: var(--accent2); color: var(--accent2); }
+  .old-toggle.active { background: rgba(255,171,64,.15); border-color: rgba(255,171,64,.5); color: #ffab40; }
+  .card.old { display: none; border-color: #8a8a8a; background: rgba(128,128,128,.07); filter: grayscale(.45) brightness(.85); }
+  .card.old.old-show { display: flex; }
 
   .grid {
     display: grid;
@@ -88,6 +93,7 @@
 
   <h1>🧩 我的模组</h1>
   <p class="sub">我开发 / 维护的 Minecraft 模组</p>
+  <button class="old-toggle" id="oldToggle" onclick="toggleOld()">👁 显示旧模组</button>
 
   <div class="grid">
     <div class="card">
@@ -141,5 +147,14 @@
 
   <div class="footer">© <span id="yr"></span> HopingStar</div>
   <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+  <script>
+  function toggleOld(){
+    var btn=document.getElementById('oldToggle');
+    var show=!btn.classList.contains('active');
+    btn.classList.toggle('active',show);
+    document.querySelectorAll('.card.old').forEach(function(c){c.classList.toggle('old-show',show);});
+    btn.textContent=show?'🙈 隐藏旧模组':'👁 显示旧模组';
+  }
+  </script>
 </body>
 </html>
