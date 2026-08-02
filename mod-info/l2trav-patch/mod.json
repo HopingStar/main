@@ -1,0 +1,20 @@
+{
+  "name": "L2 & Trav Patch",
+  "slug": "l2trav-patch",
+  "desc": "修复整合包中 l2weaponry 与 traveloptics 的崩溃冲突，让它们能共存。放入 mods 文件夹即生效，无需额外配置。",
+  "icon": "l2trav_patch.png",
+  "sections": [
+    {
+      "title": "ℹ️ 说明",
+      "body": "适用于 Minecraft 1.21.1 · NeoForge\n        \n运行时自动修复，不修改其它模组文件\n        \n需要同时安装 l2weaponry 与 traveloptics"
+    }
+  ],
+  "jars": [
+    {
+      "mc": "1.21.1",
+      "mv": "1.0.2",
+      "ld": "NeoForge",
+      "file": ".._.._mod-files_l2trav_patch-1.0.2.jar"
+    }
+  ]
+}
