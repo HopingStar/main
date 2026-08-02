@@ -66,7 +66,7 @@
   
 </div>
 <script>
-var files={"1.20.1|1.0.6|Forge":"../../assets/files/dark_did_the_great_mod-forge-1.20.1-1.0.6.jar"};
+var files={"1.20.1|1.0.6|Forge":"../../assets/files/dark_did_the_great_mod-forge-1.20.1-1.0.6.jar","1.20.1|1.0.6|Fabric":"../../assets/files/dark_did_the_great_mod-fabric-1.20.1-1.0.6.jar","1.21.1|1.0.6|NeoForge":"../../assets/files/dart_did_the_great_mod-neoforge-1.21.1-1.0.6.jar"};
 function combos(){return Object.keys(files).map(function(k){var p=k.split('|');return {mc:p[0],mv:p[1],ld:p[2]};});}
 function unique(a){return a.filter(function(v,i){return a.indexOf(v)===i;});}
 function gv(id){return document.getElementById('cs-'+id).getAttribute('data-val');}
