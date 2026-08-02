@@ -14,11 +14,8 @@
     }
   ],
   "downloads": [],
-  "old": true,
-  "tag": {
-    "text": "Essence",
-    "color": "f"
-  },
+  "old": false,
+  "tag": {},
   "jars": [
     {
       "mc": "1.20.1",
