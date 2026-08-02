@@ -42,6 +42,20 @@
   .old-toggle.active { background: rgba(255,171,64,.15); border-color: rgba(255,171,64,.5); color: #ffab40; }
   .card.old { display: none; border-color: #8a8a8a; background: rgba(128,128,128,.07); filter: grayscale(.45) brightness(.85); }
   .card.old.old-show { display: flex; }
+  .card.old::before {
+    content: 'OLD';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff7a2f;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+    z-index: 2;
+  }
 
   .grid {
     display: grid;
@@ -51,6 +65,7 @@
     margin: 0 auto;
   }
   .card {
+    position: relative;
     display: flex;
     flex-direction: column;
     background: var(--card);
