@@ -68,9 +68,9 @@ function refresh(fid,fv){
   else if(fid==='mv')sv('mv',fv);
   var ldOpts=unique(combos().map(function(c){return c.ld;}));
   var mcOpts=unique(combos().filter(function(c){return c.ld===gv('ld');}).map(function(c){return c.mc;}));
-  var mvOpts=unique(combos().filter(function(c){return c.ld===gv('ld')&&c.mc===gv('mc');}).map(function(c){return c.mv;}));
   if(ldOpts.length&&ldOpts.indexOf(gv('ld'))<0)sv('ld',ldOpts[0]);
   if(mcOpts.length&&mcOpts.indexOf(gv('mc'))<0)sv('mc',mcOpts[0]);
+  var mvOpts=unique(combos().filter(function(c){return c.ld===gv('ld')&&c.mc===gv('mc');}).map(function(c){return c.mv;}));
   if(mvOpts.length&&mvOpts.indexOf(gv('mv'))<0)sv('mv',mvOpts[0]);
   render('ld',ldOpts);render('mc',mcOpts);render('mv',mvOpts);
   var k=gv('mc')+'|'+gv('mv')+'|'+gv('ld'),h=files[k]||'#',b=document.getElementById('dlBtn');
@@ -78,6 +78,18 @@ function refresh(fid,fv){
   else{b.href=h;b.classList.remove('disabled');b.textContent='下载';b.setAttribute('download',h.split('/').pop());}
 }
 (function(){var c0=combos()[0];if(c0){sv('ld',c0.ld);sv('mc',c0.mc);sv('mv',c0.mv);}refresh();})();
+document.getElementById('dlBtn').addEventListener('click',function(e){
+  var h=this.getAttribute('href');
+  if(!h||h==='#'||this.classList.contains('disabled')){e.preventDefault();return;}
+  e.preventDefault();
+  var a=document.createElement('a');
+  a.href=h;
+  a.download=this.getAttribute('download')||'';
+  a.style.display='none';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+});
 </script>
 </body>
 </html>
