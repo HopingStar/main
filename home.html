@@ -34,9 +34,9 @@
   .hero { text-align: center; padding: 30px 0 10px; }
   .hero .avatar {
     width: 96px; height: 96px; border-radius: 50%; margin: 0 auto 20px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 40px; box-shadow: 0 8px 30px rgba(124,92,255,.4);
+    display: block; object-fit: cover;
+    border: 2px solid rgba(255,255,255,.35);
+    box-shadow: 0 8px 30px rgba(124,92,255,.4);
   }
   .hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 10px; }
   .hero p { color: var(--muted); font-size: 15px; max-width: 600px; margin: 0 auto 8px; line-height: 1.8; }
@@ -76,7 +76,7 @@
   </div>
 
   <div class="hero">
-    <div class="avatar">⭐</div>
+    <img class="avatar" src="head_image.jpg" alt="HopingStar">
     <h1>你好，我是 HopingStar</h1>
     <p>Minecraft 模组开发者 / 整合包维护者</p>
     <p>喜欢折腾 Mod、做兼容补丁、分享好玩的整合包。这里记录我的作品与日常。</p>

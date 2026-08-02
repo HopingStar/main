@@ -46,9 +46,9 @@
   .section ul { padding-left: 20px; }
   .avatar {
     width: 88px; height: 88px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 34px; margin: 0 auto 16px; box-shadow: 0 8px 30px rgba(124,92,255,.4);
+    display: block; object-fit: cover;
+    border: 2px solid rgba(255,255,255,.35);
+    margin: 0 auto 16px; box-shadow: 0 8px 30px rgba(124,92,255,.4);
   }
   .footer { text-align: center; margin-top: 20px; font-size: 13px; color: #8a93c8; }
 </style>
@@ -61,7 +61,7 @@
   </div>
 
   <div class="card">
-    <div class="avatar">⭐</div>
+    <img class="avatar" src="head_image.jpg" alt="HopingStar">
     <h1>关于我</h1>
 
     <div class="section">
