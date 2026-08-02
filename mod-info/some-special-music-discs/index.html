@@ -6,9 +6,11 @@
 <title>Some Special Music Discs · 详情</title>
 <link rel="icon" type="image/png" href="../../assets/images/favicon.png">
 <style>
+  *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:"Segoe UI","PingFang SC",sans-serif;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#f0f0ff;min-height:100vh;padding:20px;}
   .nav{text-align:center;margin-bottom:30px;}
   .nav a{color:#f0f0ff;text-decoration:none;padding:9px 20px;border:1px solid rgba(255,255,255,.15);border-radius:999px;margin:0 6px;font-size:14px;}
+  .nav a:hover{background:#7c5cff;border-color:transparent;}
   .card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:32px;max-width:640px;margin:0 auto;}
   .head{display:flex;gap:16px;align-items:center;margin-bottom:16px;}
   .head img{width:64px;height:64px;border-radius:12px;}
@@ -30,6 +32,9 @@
   .section{background:rgba(0,0,0,.25);border-radius:12px;padding:14px 18px;margin-top:16px;}
   .section h2{font-size:15px;color:#ffd740;margin-bottom:6px;}
   .section p{color:#aab2e6;font-size:14px;line-height:1.8;}
+  .other-dl{display:flex;flex-direction:column;gap:8px;}
+  .other-dl a{display:flex;align-items:center;gap:6px;padding:10px 14px;border-radius:10px;background:rgba(124,92,255,.12);border:1px solid rgba(124,92,255,.35);color:#c8c8ff;text-decoration:none;font-size:14px;transition:.2s;}
+  .other-dl a:hover{background:rgba(124,92,255,.25);color:#fff;}
 </style>
 </head>
 <body>
@@ -48,6 +53,7 @@
   
   <div class="section"><h2>ℹ️ 可用版本</h2><p>Minecraft 1.20.1 · Fabric     <br>Minecraft 1.21.1 · NeoForge</p></div>
   <div class="section"><h2>📀 内容</h2><p>新增 20 张音乐唱片    <br>流式音频播放</p></div>
+  
 </div>
 <script>
 var files={"1.20.1|1.0.0|Fabric":"../../assets/files/some_special_music_discs-1.0.0-fabric-1.20.1.jar","1.21.1|1.0.0|NeoForge":"../../assets/files/some_special_music_discs-1.0.0-neoforge-1.21.1.jar"};
