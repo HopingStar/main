@@ -1,5 +1,5 @@
 ## Hi 👋
-I'm HopingStar
+This is my website that is used to share my projects.
 <!--
 **HopingStar/hopingstar** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
