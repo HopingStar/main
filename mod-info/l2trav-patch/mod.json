@@ -5,6 +5,10 @@
   "icon": "l2trav_patch.png",
   "sections": [
     {
+      "title": "ℹ️ 可用版本",
+      "body": "Minecraft 1.21.1 · NeoForge"
+    },
+    {
       "title": "ℹ️ 说明",
       "body": "适用于 Minecraft 1.21.1 · NeoForge       \n运行时自动修复，不修改其它模组文件    \n需要同时安装 l2weaponry 与 traveloptics"
     },
