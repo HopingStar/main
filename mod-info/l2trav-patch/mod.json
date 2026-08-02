@@ -6,7 +6,11 @@
   "sections": [
     {
       "title": "ℹ️ 说明",
-      "body": "适用于 Minecraft 1.21.1 · NeoForge\n        \n运行时自动修复，不修改其它模组文件\n        \n需要同时安装 l2weaponry 与 traveloptics"
+      "body": "适用于 Minecraft 1.21.1 · NeoForge       \n运行时自动修复，不修改其它模组文件    \n需要同时安装 l2weaponry 与 traveloptics"
+    },
+    {
+      "title": "🔧当前已测试的版本",
+      "body": "L2 Weaponry（莱特利-武器）: 3.1.2\nTraveloptics(T.O Magic 'n Extras): 4.4.0.1"
     }
   ],
   "jars": [
