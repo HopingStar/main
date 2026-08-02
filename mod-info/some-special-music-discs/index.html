@@ -48,7 +48,7 @@
 </style>
 </head>
 <body>
-
+<div class="old-notice" id="oldNotice"><div class="old-notice-body"><span>⚠️ 你正在浏览旧模组的页面</span><button class="old-notice-close" onclick="closeOldNotice()">✕</button></div><div class="old-notice-bar"><div class="old-notice-fill"></div></div></div>
 <div class="nav"><a href="../../home/">🏠 首页</a><a href="../../mods/">🧩 我的模组</a><a href="../../about/">ℹ️ 关于我</a></div>
 <div class="card">
   <div class="head"><img src="../../assets/images/some_special_music_discs.png" alt="Some Special Music Discs"><div><h1>Some Special Music Discs</h1></div></div>
@@ -102,7 +102,7 @@ document.getElementById('dlBtn').addEventListener('click',function(e){
   a.click();
   document.body.removeChild(a);
 });
-
+setTimeout(function(){closeOldNotice();},5000);function closeOldNotice(){var el=document.getElementById('oldNotice');if(!el)return;el.classList.add('leaving');setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},400);}
 </script>
 </body>
 </html>

@@ -42,20 +42,10 @@
   .old-toggle.active { background: rgba(255,171,64,.15); border-color: rgba(255,171,64,.5); color: #ffab40; }
   .card.old { display: none; border-color: #8a8a8a; background: rgba(128,128,128,.07); filter: grayscale(.45) brightness(.85); }
   .card.old.old-show { display: flex; }
-  .card.old::before {
-    content: 'OLD';
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #ff7a2f;
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 3px 9px;
-    border-radius: 6px;
-    letter-spacing: 1px;
-    z-index: 2;
-  }
+  .card-badges{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:6px;z-index:2;}
+  .card-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;letter-spacing:1px;color:#fff;background:#ff7a2f;}
+  .card-badge.shine{background:linear-gradient(90deg,#AA00AA,#7c5cff,#AA00AA);background-size:200% 100%;animation:badgeShine 3s linear infinite;}
+  @keyframes badgeShine{from{background-position:0% 0;}to{background-position:-200% 0;}}
 
   .grid {
     display: grid;
@@ -111,52 +101,8 @@
   <button class="old-toggle" id="oldToggle" onclick="toggleOld()">👁 显示旧模组</button>
 
   <div class="grid">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="card">
+      <div class="card-badges"><span class="card-badge shine" style="background:#AA00AA;">Essence</span></div>
       <div class="head">
         <img src="../assets/images/l2trav_patch.png" alt="L2 &amp; Trav Patch">
         <div>
@@ -171,6 +117,7 @@
       </div>
     </div>
     <div class="card">
+      
       <div class="head">
         <img src="../assets/images/logo.png" alt="Minecraft 1.21 Music Disc">
         <div>
@@ -184,21 +131,8 @@
         <a class="btn-ghost" href="../mod-info/minecraft-1-21-music-disc/">详情</a>
       </div>
     </div>
-    <div class="card">
-      <div class="head">
-        <img src="../assets/images/some_special_music_discs.png" alt="Some Special Music Discs">
-        <div>
-          <h2>Some Special Music Discs</h2>
-          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;"><span style="display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#7b8fe8;"><img src="../assets/icons/fabric.png" alt="Fabric" style="width:15px;height:15px;display:block;border-radius:3px;">Fabric</span><span style="display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#ff7a2f;"><img src="../assets/icons/neoforge.png" alt="NeoForge" style="width:15px;height:15px;display:block;border-radius:3px;">NeoForge</span></div>
-        </div>
-      </div>
-      <p class="desc">添加了20张唱片到Minecraft中 （注：原视频来源于Youtube）</p>
-      <div class="btns">
-        <a class="btn-primary" href="../mod-info/some-special-music-discs/#download">⬇ 下载</a>
-        <a class="btn-ghost" href="../mod-info/some-special-music-discs/">详情</a>
-      </div>
-    </div>
     <div class="card old">
+      <div class="card-badges"><span class="card-badge old">OLD</span></div>
       <div class="head">
         <img src="../assets/images/calamity_mode_extra_logo.png" alt="Calamity Mod Extra">
         <div>
@@ -213,6 +147,7 @@
       </div>
     </div>
     <div class="card old">
+      <div class="card-badges"><span class="card-badge old">OLD</span></div>
       <div class="head">
         <img src="../assets/images/logo_old_mod1.png" alt="Dart Did The Great Mod">
         <div>
@@ -226,6 +161,33 @@
         <a class="btn-ghost" href="../mod-info/dark-did-the-great-mod/">详情</a>
       </div>
     </div>
+    <div class="card old">
+      <div class="card-badges"><span class="card-badge old">OLD</span><span class="card-badge shine" style="background:#AA00AA;">Essence</span></div>
+      <div class="head">
+        <img src="../assets/images/some_special_music_discs.png" alt="Some Special Music Discs">
+        <div>
+          <h2>Some Special Music Discs</h2>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;"><span style="display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#7b8fe8;"><img src="../assets/icons/fabric.png" alt="Fabric" style="width:15px;height:15px;display:block;border-radius:3px;">Fabric</span><span style="display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#ff7a2f;"><img src="../assets/icons/neoforge.png" alt="NeoForge" style="width:15px;height:15px;display:block;border-radius:3px;">NeoForge</span></div>
+        </div>
+      </div>
+      <p class="desc">添加了20张唱片到Minecraft中 （注：原视频来源于Youtube）</p>
+      <div class="btns">
+        <a class="btn-primary" href="../mod-info/some-special-music-discs/#download">⬇ 下载</a>
+        <a class="btn-ghost" href="../mod-info/some-special-music-discs/">详情</a>
+      </div>
+    </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 

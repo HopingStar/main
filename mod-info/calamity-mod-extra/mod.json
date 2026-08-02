@@ -3,7 +3,12 @@
   "slug": "calamity-mod-extra",
   "desc": "这是一个旧模组，用于§b§lOrigin-Otherworld§r服务器（现已关停）\\n由于§4§l灾厄模式§3([i]Origin-Otherworld Server特有)§r难度过高，这个模组用于盔甲防爆，但最终并未运用到服务器中，仅测试了2个版本 \\n§9[i]此服务器的存档文件已被服主打包",
   "icon": "calamity_mode_extra_logo.png",
-  "sections": [],
+  "sections": [
+    {
+      "title": "ℹ️ 可用版本",
+      "body": "Minecraft 1.20.1 · Forge"
+    }
+  ],
   "downloads": [],
   "old": true,
   "jars": [
