@@ -55,6 +55,7 @@
     color: #fff; text-decoration: none; transition: .2s; border: none; cursor: pointer;
   }
   .btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
+  .btn.disabled { opacity: .5; pointer-events: none; }
 
   .section { background: rgba(0,0,0,.25); border-radius: 14px; padding: 16px 20px; margin-top: 20px; }
   .section h2 { font-size: 16px; color: #ffd740; margin-bottom: 8px; }
@@ -144,31 +145,36 @@
       "1.20.1|1.0.0|Fabric":   "../../mod-files/some_special_music_discs-1.0.0-fabric-1.20.1.jar",
       "1.21.1|1.0.0|NeoForge": "../../mod-files/some_special_music_discs-1.0.0-neoforge-1.21.1.jar"
     };
-    var opts = { mc: ["1.20.1", "1.21.1"], mv: ["1.0.0"], ld: ["Fabric", "NeoForge"] };
+    var allOpts = { mc: ["1.20.1", "1.21.1"], mv: ["1.0.0"], ld: ["Fabric", "NeoForge"] };
 
-    // 初始化自定义下拉
-    function initCS(id, values) {
+    function getVal(id){ return document.getElementById('cs-' + id).getAttribute('data-val'); }
+    function setVal(id, v){ var cs = document.getElementById('cs-' + id); cs.setAttribute('data-val', v); cs.querySelector('.cs-head').textContent = v; }
+
+    // 在所有有效组合里，找匹配 forcedId=forcedVal 的那一个
+    function findCombo(forcedId, forcedVal) {
+      var keys = Object.keys(files);
+      for (var i = 0; i < keys.length; i++) {
+        var p = keys[i].split('|');
+        var c = { mc: p[0], mv: p[1], ld: p[2] };
+        if (c[forcedId] === forcedVal) return c;
+      }
+      return null;
+    }
+
+    // 重建某个下拉的选项（全部选项，选择后其它下拉会自动调整为有效组合）
+    function render(id) {
       var cs = document.getElementById('cs-' + id);
-      var head = cs.querySelector('.cs-head');
       var list = cs.querySelector('.cs-list');
-      values.forEach(function(v) {
+      list.innerHTML = '';
+      allOpts[id].forEach(function(v) {
         var o = document.createElement('div');
-        o.className = 'cs-opt';
-        o.textContent = v;
-        o.setAttribute('data-v', v);
+        o.className = 'cs-opt'; o.textContent = v; o.setAttribute('data-v', v);
         o.addEventListener('click', function(ev) {
-          ev.stopPropagation();
-          head.textContent = v;
-          cs.setAttribute('data-val', v);
-          cs.classList.remove('open');
-          update();
+          ev.stopPropagation(); cs.classList.remove('open'); refresh(id, v);
         });
         list.appendChild(o);
       });
-      head.textContent = values[0];
-      cs.setAttribute('data-val', values[0]);
     }
-    Object.keys(opts).forEach(function(k) { initCS(k, opts[k]); });
 
     // 点击展开/收起（同一时间只开一个）
     document.querySelectorAll('.cs').forEach(function(cs) {
@@ -183,18 +189,26 @@
       document.querySelectorAll('.cs.open').forEach(function(x) { x.classList.remove('open'); });
     });
 
-    function update() {
-      var mc = document.getElementById('cs-mc').getAttribute('data-val');
-      var mv = document.getElementById('cs-mv').getAttribute('data-val');
-      var ld = document.getElementById('cs-ld').getAttribute('data-val');
-      var key = mc + '|' + mv + '|' + ld;
+    function refresh(forcedId, forcedVal) {
+      var combo;
+      if (forcedId) {
+        combo = findCombo(forcedId, forcedVal) || { mc: getVal('mc'), mv: getVal('mv'), ld: getVal('ld') };
+      } else {
+        combo = findCombo('mc', allOpts.mc[0]) || { mc: allOpts.mc[0], mv: allOpts.mv[0], ld: allOpts.ld[0] };
+      }
+      setVal('mc', combo.mc); setVal('mv', combo.mv); setVal('ld', combo.ld);
+      render('mc'); render('mv'); render('ld');
+      var key = combo.mc + '|' + combo.mv + '|' + combo.ld;
       var href = files[key] || '#';
       var btn = document.getElementById('dlBtn');
-      btn.href = href;
-      btn.setAttribute('download', href.split('/').pop());
-      btn.style.opacity = (href && href !== '#') ? '1' : '.5';
+      if (href === '#') {
+        btn.href = '#'; btn.classList.add('disabled'); btn.textContent = '此组合暂无可下载文件';
+      } else {
+        btn.href = href; btn.classList.remove('disabled'); btn.textContent = '下载';
+        btn.setAttribute('download', href.split('/').pop());
+      }
     }
-    update();
+    refresh();
   </script>
 </body>
 </html>
