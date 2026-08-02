@@ -6,209 +6,60 @@
 <title>Some Special Music Discs · 详情</title>
 <link rel="icon" type="image/png" href="../../favicon.png">
 <style>
-  :root {
-    --bg1: #0f0c29; --bg2: #302b63; --bg3: #24243e;
-    --accent: #7c5cff; --accent2: #00d4ff;
-    --card: rgba(255,255,255,.06);
-    --border: rgba(255,255,255,.12);
-    --text: #f0f0ff; --muted: #aab2e6;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-    min-height: 100vh;
-    background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
-    color: var(--text); padding: 20px;
-  }
-  .nav { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 36px; }
-  .nav a {
-    color: var(--text); text-decoration: none; padding: 9px 22px; border-radius: 999px;
-    border: 1px solid var(--border); background: rgba(255,255,255,.05);
-    backdrop-filter: blur(8px); font-size: 14px; transition: .2s;
-  }
-  .nav a:hover, .nav a.active { background: linear-gradient(90deg, var(--accent), var(--accent2)); border-color: transparent; }
-
-  .card {
-    background: rgba(255,255,255,.12); border: 1px solid var(--border); border-radius: 18px;
-    padding: 34px; max-width: 640px; margin: 0 auto;
-  }
-  .head { display: flex; gap: 18px; align-items: center; margin-bottom: 20px; }
-  .head img { width: 72px; height: 72px; border-radius: 14px; }
-  .head h1 { font-size: 24px; }
-  .head .v { color: #ffd740; font-size: 14px; font-weight: 600; }
-  .desc { color: var(--muted); font-size: 14px; line-height: 1.8; margin-bottom: 22px; }
-
-  .dl-box { background: rgba(0,0,0,.25); border-radius: 14px; padding: 20px; }
-  .dl-box h2 { font-size: 16px; color: #ffd740; margin-bottom: 16px; }
-  .field { margin-bottom: 14px; }
-  .field label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
-  .field select {
-    width: 100%; padding: 10px 12px; border-radius: 10px;
-    background: rgba(255,255,255,.08); border: 1px solid var(--border);
-    color: var(--text); font-size: 14px; outline: none;
-  }
-  .field select:focus { border-color: var(--accent2); }
-  .btn {
-    display: block; width: 100%; text-align: center; margin-top: 18px;
-    padding: 14px; border-radius: 12px; font-size: 16px; font-weight: 700;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    color: #fff; text-decoration: none; transition: .2s; border: none; cursor: pointer;
-  }
-  .btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
-  .btn.disabled { opacity: .5; pointer-events: none; }
-
-  .section { background: rgba(0,0,0,.25); border-radius: 14px; padding: 16px 20px; margin-top: 20px; }
-  .section h2 { font-size: 16px; color: #ffd740; margin-bottom: 8px; }
-  .section ul { padding-left: 20px; color: var(--muted); font-size: 14px; line-height: 1.9; }
-  .back { text-align: center; margin-top: 18px; }
-  .back a { color: var(--accent2); text-decoration: none; font-size: 14px; }
-  .back a:hover { text-decoration: underline; }
-
-  /* 自定义下拉菜单 */
-  .cs { position: relative; }
-  .cs-head {
-    width: 100%; padding: 10px 12px; border-radius: 10px;
-    background: rgba(255,255,255,.08); border: 1px solid var(--border);
-    color: var(--text); font-size: 14px; cursor: pointer;
-    display: flex; justify-content: space-between; align-items: center;
-    user-select: none;
-  }
-  .cs-head:hover { border-color: var(--accent2); }
-  .cs-head::after { content: "▾"; margin-left: 8px; color: var(--muted); }
-  .cs-list {
-    position: absolute; top: calc(100% + 4px); left: 0; right: 0; z-index: 200;
-    background: #1c1b3a; border: 1px solid var(--border); border-radius: 10px;
-    overflow: hidden; display: none; box-shadow: 0 8px 24px rgba(0,0,0,.4);
-  }
-  .cs.open .cs-list { display: block; }
-  .cs-opt { padding: 10px 12px; cursor: pointer; font-size: 14px; color: var(--text); }
-  .cs-opt:hover { background: rgba(124,92,255,.35); }
+  body{font-family:"Segoe UI","PingFang SC",sans-serif;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#f0f0ff;min-height:100vh;padding:20px;}
+  .nav{text-align:center;margin-bottom:30px;}
+  .nav a{color:#f0f0ff;text-decoration:none;padding:9px 20px;border:1px solid rgba(255,255,255,.15);border-radius:999px;margin:0 6px;font-size:14px;}
+  .card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:32px;max-width:640px;margin:0 auto;}
+  .head{display:flex;gap:16px;align-items:center;margin-bottom:16px;}
+  .head img{width:64px;height:64px;border-radius:12px;}
+  .head h1{font-size:24px;}
+  .v{color:#ffd740;font-weight:600;}
+  .desc{color:#aab2e6;line-height:1.8;margin-bottom:20px;}
+  .dl-box{background:rgba(0,0,0,.25);border-radius:14px;padding:18px;}
+  .field{margin-bottom:12px;}
+  .field label{display:block;font-size:13px;color:#aab2e6;margin-bottom:5px;}
+  .cs{position:relative;}
+  .cs-head{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 12px;cursor:pointer;font-size:14px;}
+  .cs-head::after{content:" \25BE";color:#aab2e6;}
+  .cs-list{position:absolute;top:calc(100%+4px);left:0;right:0;z-index:200;background:#1c1b3a;border:1px solid rgba(255,255,255,.15);border-radius:10px;display:none;box-shadow:0 8px 24px rgba(0,0,0,.4);}
+  .cs.open .cs-list{display:block;}
+  .cs-opt{padding:10px 12px;cursor:pointer;font-size:14px;}
+  .cs-opt:hover{background:rgba(124,92,255,.35);}
+  .btn{display:block;width:100%;text-align:center;margin-top:16px;padding:13px;border-radius:12px;font-weight:700;background:linear-gradient(90deg,#7c5cff,#00d4ff);color:#fff;text-decoration:none;}
+  .btn.disabled{opacity:.5;pointer-events:none;}
+  .section{background:rgba(0,0,0,.25);border-radius:12px;padding:14px 18px;margin-top:16px;}
+  .section h2{font-size:15px;color:#ffd740;margin-bottom:6px;}
+  .section p{color:#aab2e6;font-size:14px;line-height:1.8;}
 </style>
 </head>
 <body>
-  <div class="nav">
-    <a href="../../home/">🏠 首页</a>
-    <a href="../../mods/">🧩 我的模组</a>
-    <a href="../../about/">ℹ️ 关于我</a>
+<div class="nav"><a href="../../home/">🏠 首页</a><a href="../../mods/">🧩 我的模组</a><a href="../../about/">ℹ️ 关于我</a></div>
+<div class="card">
+  <div class="head"><img src="../../some_special_music_discs.png" alt="Some Special Music Discs"><div><h1>Some Special Music Discs</h1><div class="v">Fabric 版</div></div></div>
+  <p class="desc">添加 20 张音乐唱片（含流式音频）到 Minecraft。Fabric 与 NeoForge 双版本。
+(注：原视频来源于Youtube)</p>
+  <div class="dl-box" id="download">
+    <h2 style="font-size:16px;color:#ffd740;margin-bottom:14px">⬇ 选择版本下载</h2>
+    <div class="field"><label>Minecraft 版本</label><div class="cs" id="cs-mc"><div class="cs-head"></div><div class="cs-list"></div></div></div>
+    <div class="field"><label>模组版本</label><div class="cs" id="cs-mv"><div class="cs-head"></div><div class="cs-list"></div></div></div>
+    <div class="field"><label>模组加载器</label><div class="cs" id="cs-ld"><div class="cs-head"></div><div class="cs-list"></div></div></div>
+    <a class="btn" id="dlBtn" href="#" download>下载</a>
   </div>
-
-  <div class="card">
-    <div class="head">
-      <img src="../../some_special_music_discs.png" alt="Some Special Music Discs">
-      <div>
-        <h1>Some Special Music Discs</h1>
-        <div class="v">粉丝自制音乐唱片</div>
-      </div>
-    </div>
-    <p class="desc">添加 <b>20 张粉丝自制音乐唱片</b>（含流式音频）到 Minecraft。Fabric 与 NeoForge 双版本。</p>
-
-    <div class="dl-box" id="download">
-      <h2>⬇ 选择版本下载</h2>
-      <div class="field">
-        <label>Minecraft 版本</label>
-        <div class="cs" id="cs-mc"><div class="cs-head"></div><div class="cs-list"></div></div>
-      </div>
-      <div class="field">
-        <label>模组版本</label>
-        <div class="cs" id="cs-mv"><div class="cs-head"></div><div class="cs-list"></div></div>
-      </div>
-      <div class="field">
-        <label>模组加载器</label>
-        <div class="cs" id="cs-ld"><div class="cs-head"></div><div class="cs-list"></div></div>
-      </div>
-      <a class="btn" id="dlBtn" href="#" download>下载</a>
-    </div>
-
-    <div class="section">
-      <h2>ℹ️ 可用版本</h2>
-      <ul>
-        <li>Minecraft <b>1.20.1</b> · <b>Fabric</b></li>
-        <li>Minecraft <b>1.21.1</b> · <b>NeoForge</b></li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>📀 内容</h2>
-      <ul>
-        <li>20 张粉丝自制音乐唱片</li>
-        <li>流式音频播放</li>
-        <li>中英文名称</li>
-      </ul>
-    </div>
-
-    <div class="back"><a href="../../mods/">← 返回模组列表</a></div>
-  </div>
-
-  <script>
-    // 可用版本清单（MC版本 | 模组版本 | 加载器 -> jar 相对路径）
-    var files = {
-      "1.20.1|1.0.0|Fabric":   "../../mod-files/some_special_music_discs-1.0.0-fabric-1.20.1.jar",
-      "1.21.1|1.0.0|NeoForge": "../../mod-files/some_special_music_discs-1.0.0-neoforge-1.21.1.jar"
-    };
-    var allOpts = { mc: ["1.20.1", "1.21.1"], mv: ["1.0.0"], ld: ["Fabric", "NeoForge"] };
-
-    function getVal(id){ return document.getElementById('cs-' + id).getAttribute('data-val'); }
-    function setVal(id, v){ var cs = document.getElementById('cs-' + id); cs.setAttribute('data-val', v); cs.querySelector('.cs-head').textContent = v; }
-
-    // 在所有有效组合里，找匹配 forcedId=forcedVal 的那一个
-    function findCombo(forcedId, forcedVal) {
-      var keys = Object.keys(files);
-      for (var i = 0; i < keys.length; i++) {
-        var p = keys[i].split('|');
-        var c = { mc: p[0], mv: p[1], ld: p[2] };
-        if (c[forcedId] === forcedVal) return c;
-      }
-      return null;
-    }
-
-    // 重建某个下拉的选项（全部选项，选择后其它下拉会自动调整为有效组合）
-    function render(id) {
-      var cs = document.getElementById('cs-' + id);
-      var list = cs.querySelector('.cs-list');
-      list.innerHTML = '';
-      allOpts[id].forEach(function(v) {
-        var o = document.createElement('div');
-        o.className = 'cs-opt'; o.textContent = v; o.setAttribute('data-v', v);
-        o.addEventListener('click', function(ev) {
-          ev.stopPropagation(); cs.classList.remove('open'); refresh(id, v);
-        });
-        list.appendChild(o);
-      });
-    }
-
-    // 点击展开/收起（同一时间只开一个）
-    document.querySelectorAll('.cs').forEach(function(cs) {
-      cs.querySelector('.cs-head').addEventListener('click', function(ev) {
-        ev.stopPropagation();
-        var isOpen = cs.classList.contains('open');
-        document.querySelectorAll('.cs.open').forEach(function(x) { x.classList.remove('open'); });
-        if (!isOpen) cs.classList.add('open');
-      });
-    });
-    document.addEventListener('click', function() {
-      document.querySelectorAll('.cs.open').forEach(function(x) { x.classList.remove('open'); });
-    });
-
-    function refresh(forcedId, forcedVal) {
-      var combo;
-      if (forcedId) {
-        combo = findCombo(forcedId, forcedVal) || { mc: getVal('mc'), mv: getVal('mv'), ld: getVal('ld') };
-      } else {
-        combo = findCombo('mc', allOpts.mc[0]) || { mc: allOpts.mc[0], mv: allOpts.mv[0], ld: allOpts.ld[0] };
-      }
-      setVal('mc', combo.mc); setVal('mv', combo.mv); setVal('ld', combo.ld);
-      render('mc'); render('mv'); render('ld');
-      var key = combo.mc + '|' + combo.mv + '|' + combo.ld;
-      var href = files[key] || '#';
-      var btn = document.getElementById('dlBtn');
-      if (href === '#') {
-        btn.href = '#'; btn.classList.add('disabled'); btn.textContent = '此组合暂无可下载文件';
-      } else {
-        btn.href = href; btn.classList.remove('disabled'); btn.textContent = '下载';
-        btn.setAttribute('download', href.split('/').pop());
-      }
-    }
-    refresh();
-  </script>
+  
+  <div class="section"><h2>ℹ️ 可用版本</h2><p>Minecraft 1.20.1 · Fabric<br>        <br>Minecraft 1.21.1 · NeoForge</p></div>
+  <div class="section"><h2>📀 内容</h2><p>20 张粉丝自制音乐唱片<br>        <br>流式音频播放<br>        <br>中英文名称</p></div>
+</div>
+<script>
+var files={"1.20.1|1.0.0|Fabric":"../../mod-files/.._.._mod-files_some_special_music_discs-1.0.0-fabric-1.20.1.jar"};
+var allOpts={mc:["1.20.1"],mv:["1.0.0"],ld:["Fabric"]};
+function gv(id){return document.getElementById('cs-'+id).getAttribute('data-val');}
+function sv(id,v){var cs=document.getElementById('cs-'+id);cs.setAttribute('data-val',v);cs.querySelector('.cs-head').textContent=v;}
+function findCombo(fid,fv){var ks=Object.keys(files);for(var i=0;i<ks.length;i++){var p=ks[i].split('|');var c={mc:p[0],mv:p[1],ld:p[2]};if(c[fid]===fv)return c;}return null;}
+function render(id){var cs=document.getElementById('cs-'+id),list=cs.querySelector('.cs-list');list.innerHTML='';allOpts[id].forEach(function(v){var o=document.createElement('div');o.className='cs-opt';o.textContent=v;o.setAttribute('data-v',v);o.onclick=function(e){e.stopPropagation();cs.classList.remove('open');refresh(id,v);};list.appendChild(o);});}
+document.querySelectorAll('.cs').forEach(function(cs){cs.querySelector('.cs-head').onclick=function(e){e.stopPropagation();var o=cs.classList.contains('open');document.querySelectorAll('.cs.open').forEach(function(x){x.classList.remove('open');});if(!o)cs.classList.add('open');};});
+document.addEventListener('click',function(){document.querySelectorAll('.cs.open').forEach(function(x){x.classList.remove('open');});});
+function refresh(fid,fv){var c=fid?findCombo(fid,fv)||{mc:gv('mc'),mv:gv('mv'),ld:gv('ld')}:findCombo('mc',allOpts.mc[0])||{mc:allOpts.mc[0],mv:allOpts.mv[0],ld:allOpts.ld[0]};sv('mc',c.mc);sv('mv',c.mv);sv('ld',c.ld);render('mc');render('mv');render('ld');var k=c.mc+'|'+c.mv+'|'+c.ld,h=files[k]||'#',b=document.getElementById('dlBtn');if(h==='#'){b.href='#';b.classList.add('disabled');b.textContent='此组合暂无可下载文件';}else{b.href=h;b.classList.remove('disabled');b.textContent='下载';b.setAttribute('download',h.split('/').pop());}}
+refresh();
+</script>
 </body>
 </html>
