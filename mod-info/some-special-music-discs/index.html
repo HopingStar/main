@@ -62,6 +62,26 @@
   .back { text-align: center; margin-top: 18px; }
   .back a { color: var(--accent2); text-decoration: none; font-size: 14px; }
   .back a:hover { text-decoration: underline; }
+
+  /* 自定义下拉菜单 */
+  .cs { position: relative; }
+  .cs-head {
+    width: 100%; padding: 10px 12px; border-radius: 10px;
+    background: rgba(255,255,255,.08); border: 1px solid var(--border);
+    color: var(--text); font-size: 14px; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    user-select: none;
+  }
+  .cs-head:hover { border-color: var(--accent2); }
+  .cs-head::after { content: "▾"; margin-left: 8px; color: var(--muted); }
+  .cs-list {
+    position: absolute; top: calc(100% + 4px); left: 0; right: 0; z-index: 200;
+    background: #1c1b3a; border: 1px solid var(--border); border-radius: 10px;
+    overflow: hidden; display: none; box-shadow: 0 8px 24px rgba(0,0,0,.4);
+  }
+  .cs.open .cs-list { display: block; }
+  .cs-opt { padding: 10px 12px; cursor: pointer; font-size: 14px; color: var(--text); }
+  .cs-opt:hover { background: rgba(124,92,255,.35); }
 </style>
 </head>
 <body>
@@ -79,21 +99,21 @@
         <div class="v">粉丝自制音乐唱片</div>
       </div>
     </div>
-    <p class="desc">添加 <b>20 张音乐唱片</b>到 Minecraft。Fabric 与 NeoForge 双版本。(注：音乐本身并非我所制作，原视频取材于Youtube，由多位创作者共同完成)</p>
+    <p class="desc">添加 <b>20 张粉丝自制音乐唱片</b>（含流式音频）到 Minecraft。Fabric 与 NeoForge 双版本。</p>
 
     <div class="dl-box" id="download">
       <h2>⬇ 选择版本下载</h2>
       <div class="field">
         <label>Minecraft 版本</label>
-        <select id="mc"></select>
+        <div class="cs" id="cs-mc"><div class="cs-head"></div><div class="cs-list"></div></div>
       </div>
       <div class="field">
         <label>模组版本</label>
-        <select id="mv"></select>
+        <div class="cs" id="cs-mv"><div class="cs-head"></div><div class="cs-list"></div></div>
       </div>
       <div class="field">
         <label>模组加载器</label>
-        <select id="ld"></select>
+        <div class="cs" id="cs-ld"><div class="cs-head"></div><div class="cs-list"></div></div>
       </div>
       <a class="btn" id="dlBtn" href="#" download>下载</a>
     </div>
@@ -111,6 +131,7 @@
       <ul>
         <li>20 张粉丝自制音乐唱片</li>
         <li>流式音频播放</li>
+        <li>中英文名称</li>
       </ul>
     </div>
 
@@ -123,24 +144,56 @@
       "1.20.1|1.0.0|Fabric":   "../../mod-files/some_special_music_discs-1.0.0-fabric-1.20.1.jar",
       "1.21.1|1.0.0|NeoForge": "../../mod-files/some_special_music_discs-1.0.0-neoforge-1.21.1.jar"
     };
-    var mcs = ["1.20.1", "1.21.1"];
-    var mvs = ["1.0.0"];
-    var lds = ["Fabric", "NeoForge"];
+    var opts = { mc: ["1.20.1", "1.21.1"], mv: ["1.0.0"], ld: ["Fabric", "NeoForge"] };
 
-    function fill(sel, arr) { sel.innerHTML = ""; arr.forEach(function(v){ var o=document.createElement("option"); o.value=v; o.textContent=v; sel.appendChild(o); }); }
-    fill(document.getElementById("mc"), mcs);
-    fill(document.getElementById("mv"), mvs);
-    fill(document.getElementById("ld"), lds);
+    // 初始化自定义下拉
+    function initCS(id, values) {
+      var cs = document.getElementById('cs-' + id);
+      var head = cs.querySelector('.cs-head');
+      var list = cs.querySelector('.cs-list');
+      values.forEach(function(v) {
+        var o = document.createElement('div');
+        o.className = 'cs-opt';
+        o.textContent = v;
+        o.setAttribute('data-v', v);
+        o.addEventListener('click', function(ev) {
+          ev.stopPropagation();
+          head.textContent = v;
+          cs.setAttribute('data-val', v);
+          cs.classList.remove('open');
+          update();
+        });
+        list.appendChild(o);
+      });
+      head.textContent = values[0];
+      cs.setAttribute('data-val', values[0]);
+    }
+    Object.keys(opts).forEach(function(k) { initCS(k, opts[k]); });
+
+    // 点击展开/收起（同一时间只开一个）
+    document.querySelectorAll('.cs').forEach(function(cs) {
+      cs.querySelector('.cs-head').addEventListener('click', function(ev) {
+        ev.stopPropagation();
+        var isOpen = cs.classList.contains('open');
+        document.querySelectorAll('.cs.open').forEach(function(x) { x.classList.remove('open'); });
+        if (!isOpen) cs.classList.add('open');
+      });
+    });
+    document.addEventListener('click', function() {
+      document.querySelectorAll('.cs.open').forEach(function(x) { x.classList.remove('open'); });
+    });
 
     function update() {
-      var key = document.getElementById("mc").value + "|" + document.getElementById("mv").value + "|" + document.getElementById("ld").value;
-      var href = files[key] || "#";
-      document.getElementById("dlBtn").href = href;
-      document.getElementById("dlBtn").setAttribute("download", href.split("/").pop());
-      if (!href || href === "#") { document.getElementById("dlBtn").style.opacity = ".5"; }
-      else { document.getElementById("dlBtn").style.opacity = "1"; }
+      var mc = document.getElementById('cs-mc').getAttribute('data-val');
+      var mv = document.getElementById('cs-mv').getAttribute('data-val');
+      var ld = document.getElementById('cs-ld').getAttribute('data-val');
+      var key = mc + '|' + mv + '|' + ld;
+      var href = files[key] || '#';
+      var btn = document.getElementById('dlBtn');
+      btn.href = href;
+      btn.setAttribute('download', href.split('/').pop());
+      btn.style.opacity = (href && href !== '#') ? '1' : '.5';
     }
-    ["mc","mv","ld"].forEach(function(id){ document.getElementById(id).addEventListener("change", update); });
     update();
   </script>
 </body>
