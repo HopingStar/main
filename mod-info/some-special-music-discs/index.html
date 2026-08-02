@@ -49,8 +49,8 @@
   <div class="section"><h2>📀 内容</h2><p>20 张粉丝自制音乐唱片<br>        <br>流式音频播放<br>        <br>中英文名称</p></div>
 </div>
 <script>
-var files={"1.20.1|1.0.0|Fabric":"../../mod-files/.._.._mod-files_some_special_music_discs-1.0.0-fabric-1.20.1.jar"};
-var allOpts={mc:["1.20.1"],mv:["1.0.0"],ld:["Fabric"]};
+var files={"1.20.1|1.0.0|Fabric":"../../mod-files/.._.._mod-files_some_special_music_discs-1.0.0-fabric-1.20.1.jar","1.21.1|1.0.0|NeoForge":"../../mod-files/some_special_music_discs-1.0.0-neoforge-1.21.1.jar"};
+var allOpts={mc:["1.20.1","1.21.1"],mv:["1.0.0"],ld:["Fabric","NeoForge"]};
 function gv(id){return document.getElementById('cs-'+id).getAttribute('data-val');}
 function sv(id,v){var cs=document.getElementById('cs-'+id);cs.setAttribute('data-val',v);cs.querySelector('.cs-head').textContent=v;}
 function findCombo(fid,fv){var ks=Object.keys(files);for(var i=0;i<ks.length;i++){var p=ks[i].split('|');var c={mc:p[0],mv:p[1],ld:p[2]};if(c[fid]===fv)return c;}return null;}
