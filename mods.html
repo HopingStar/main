@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>模组展示 · HopingStar</title>
+<style>
+  :root {
+    --bg1: #0f0c29; --bg2: #302b63; --bg3: #24243e;
+    --accent: #7c5cff; --accent2: #00d4ff;
+    --card: rgba(255,255,255,.06);
+    --border: rgba(255,255,255,.12);
+    --text: #f0f0ff; --muted: #aab2e6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+    color: var(--text);
+    padding: 20px;
+  }
+  .nav {
+    display: flex; justify-content: center; gap: 10px;
+    flex-wrap: wrap; margin-bottom: 40px;
+  }
+  .nav a {
+    color: var(--text); text-decoration: none;
+    padding: 9px 22px; border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.05);
+    backdrop-filter: blur(8px);
+    font-size: 14px;
+    transition: .2s;
+  }
+  .nav a:hover, .nav a.active { background: linear-gradient(90deg, var(--accent), var(--accent2)); border-color: transparent; }
+  h1 { text-align: center; font-size: 30px; margin-bottom: 8px; }
+  .sub { text-align: center; color: var(--muted); margin-bottom: 36px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 26px;
+    backdrop-filter: blur(10px);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(124,92,255,.25); }
+  .card .head { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+  .card img { width: 64px; height: 64px; border-radius: 14px; }
+  .card h2 { font-size: 20px; }
+  .card .ver { color: #ffd740; font-size: 13px; font-weight: 600; }
+  .card p.desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 16px; }
+  .card .btns { display: flex; gap: 10px; }
+  .card .btns a {
+    flex: 1; text-align: center; text-decoration: none;
+    padding: 10px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    transition: .2s;
+  }
+  .btn-primary { background: linear-gradient(90deg, var(--accent), var(--accent2)); color: #fff; }
+  .btn-primary:hover { filter: brightness(1.1); }
+  .btn-ghost { border: 1px solid var(--border); color: var(--text); }
+  .btn-ghost:hover { background: rgba(255,255,255,.1); }
+
+  .empty {
+    grid-column: 1 / -1; text-align: center; color: var(--muted);
+    padding: 60px 0; border: 1px dashed var(--border); border-radius: 18px;
+  }
+  .footer { text-align: center; margin-top: 50px; color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+  <div class="nav">
+    <a href="index.html">🏠 首页</a>
+    <a href="mods.html" class="active">🧩 模组展示</a>
+    <a href="download.html">📦 下载</a>
+    <a href="about.html">ℹ️ 关于</a>
+  </div>
+
+  <h1>🧩 模组展示</h1>
+  <p class="sub">我开发 / 维护的 Minecraft 模组</p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="head">
+        <img src="l2trav_patch.png" alt="L2 & Trav Patch">
+        <div>
+          <h2>L2 &amp; Trav Patch</h2>
+          <div class="ver">v1.0.2 · MC 1.21.1 · NeoForge</div>
+        </div>
+      </div>
+      <p class="desc">运行时兼容补丁，修复 <b>l2weaponry</b> 与 <b>traveloptics</b> 的崩溃冲突，让它们能共存。放入 mods 文件夹即生效。</p>
+      <div class="btns">
+        <a class="btn-primary" href="download.html">⬇ 下载</a>
+        <a class="btn-ghost" href="about.html">详情</a>
+      </div>
+    </div>
+
+    <div class="empty">+ 更多模组敬请期待</div>
+  </div>
+
+  <div class="footer">© <span id="yr"></span> HopingStar</div>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
