@@ -44,9 +44,9 @@
   <p class="desc">修复整合包中 l2weaponry 与 traveloptics 的崩溃冲突，让它们能共存。放入 mods 文件夹即生效，无需额外配置。</p>
   <div class="dl-box" id="download">
     <h2 style="font-size:16px;color:#ffd740;margin-bottom:14px">⬇ 选择版本下载</h2>
+    <div class="field"><label>模组加载器</label><div class="cs" id="cs-ld"><div class="cs-head"></div><div class="cs-list"></div></div></div>
     <div class="field"><label>Minecraft 版本</label><div class="cs" id="cs-mc"><div class="cs-head"></div><div class="cs-list"></div></div></div>
     <div class="field"><label>模组版本</label><div class="cs" id="cs-mv"><div class="cs-head"></div><div class="cs-list"></div></div></div>
-    <div class="field"><label>模组加载器</label><div class="cs" id="cs-ld"><div class="cs-head"></div><div class="cs-list"></div></div></div>
     <a class="btn" id="dlBtn" href="#" download>下载</a>
   </div>
   
@@ -58,15 +58,29 @@
 </div>
 <script>
 var files={"1.21.1|1.0.2|NeoForge":"../../assets/files/l2trav_patch-1.0.2.jar"};
-var allOpts={mc:["1.21.1"],mv:["1.0.2"],ld:["NeoForge"]};
+function combos(){return Object.keys(files).map(function(k){var p=k.split('|');return {mc:p[0],mv:p[1],ld:p[2]};});}
+function unique(a){return a.filter(function(v,i){return a.indexOf(v)===i;});}
 function gv(id){return document.getElementById('cs-'+id).getAttribute('data-val');}
 function sv(id,v){var cs=document.getElementById('cs-'+id);cs.setAttribute('data-val',v);cs.querySelector('.cs-head').textContent=v;}
-function findCombo(fid,fv){var ks=Object.keys(files);for(var i=0;i<ks.length;i++){var p=ks[i].split('|');var c={mc:p[0],mv:p[1],ld:p[2]};if(c[fid]===fv)return c;}return null;}
-function render(id){var cs=document.getElementById('cs-'+id),list=cs.querySelector('.cs-list');list.innerHTML='';allOpts[id].forEach(function(v){var o=document.createElement('div');o.className='cs-opt';o.textContent=v;o.setAttribute('data-v',v);o.onclick=function(e){e.stopPropagation();cs.classList.remove('open');refresh(id,v);};list.appendChild(o);});}
+function render(id,opts){var cs=document.getElementById('cs-'+id),list=cs.querySelector('.cs-list');list.innerHTML='';opts.forEach(function(v){var o=document.createElement('div');o.className='cs-opt';o.textContent=v;o.setAttribute('data-v',v);o.onclick=function(e){e.stopPropagation();cs.classList.remove('open');refresh(id,v);};list.appendChild(o);});}
 document.querySelectorAll('.cs').forEach(function(cs){cs.querySelector('.cs-head').onclick=function(e){e.stopPropagation();var o=cs.classList.contains('open');document.querySelectorAll('.cs.open').forEach(function(x){x.classList.remove('open');});if(!o)cs.classList.add('open');};});
 document.addEventListener('click',function(){document.querySelectorAll('.cs.open').forEach(function(x){x.classList.remove('open');});});
-function refresh(fid,fv){var c=fid?findCombo(fid,fv)||{mc:gv('mc'),mv:gv('mv'),ld:gv('ld')}:findCombo('mc',allOpts.mc[0])||{mc:allOpts.mc[0],mv:allOpts.mv[0],ld:allOpts.ld[0]};sv('mc',c.mc);sv('mv',c.mv);sv('ld',c.ld);render('mc');render('mv');render('ld');var k=c.mc+'|'+c.mv+'|'+c.ld,h=files[k]||'#',b=document.getElementById('dlBtn');if(h==='#'){b.href='#';b.classList.add('disabled');b.textContent='此组合暂无可下载文件';}else{b.href=h;b.classList.remove('disabled');b.textContent='下载';b.setAttribute('download',h.split('/').pop());}}
-refresh();
+function refresh(fid,fv){
+  if(fid==='ld')sv('ld',fv);
+  else if(fid==='mc')sv('mc',fv);
+  else if(fid==='mv')sv('mv',fv);
+  var ldOpts=unique(combos().map(function(c){return c.ld;}));
+  var mcOpts=unique(combos().filter(function(c){return c.ld===gv('ld');}).map(function(c){return c.mc;}));
+  var mvOpts=unique(combos().filter(function(c){return c.ld===gv('ld')&&c.mc===gv('mc');}).map(function(c){return c.mv;}));
+  if(ldOpts.length&&ldOpts.indexOf(gv('ld'))<0)sv('ld',ldOpts[0]);
+  if(mcOpts.length&&mcOpts.indexOf(gv('mc'))<0)sv('mc',mcOpts[0]);
+  if(mvOpts.length&&mvOpts.indexOf(gv('mv'))<0)sv('mv',mvOpts[0]);
+  render('ld',ldOpts);render('mc',mcOpts);render('mv',mvOpts);
+  var k=gv('mc')+'|'+gv('mv')+'|'+gv('ld'),h=files[k]||'#',b=document.getElementById('dlBtn');
+  if(h==='#'){b.href='#';b.classList.add('disabled');b.textContent='此组合暂无可下载文件';}
+  else{b.href=h;b.classList.remove('disabled');b.textContent='下载';b.setAttribute('download',h.split('/').pop());}
+}
+(function(){var c0=combos()[0];if(c0){sv('ld',c0.ld);sv('mc',c0.mc);sv('mv',c0.mv);}refresh();})();
 </script>
 </body>
 </html>
