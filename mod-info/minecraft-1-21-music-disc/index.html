@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minecraft 1.21 Music Disc · 详情</title>
+<link rel="icon" type="image/png" href="../../assets/images/favicon.png">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Segoe UI","PingFang SC",sans-serif;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#f0f0ff;min-height:100vh;padding:20px;}
+  .nav{text-align:center;margin-bottom:30px;}
+  .nav a{color:#f0f0ff;text-decoration:none;padding:9px 20px;border:1px solid rgba(255,255,255,.15);border-radius:999px;margin:0 6px;font-size:14px;}
+  .nav a:hover{background:#7c5cff;border-color:transparent;}
+  .card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:32px;max-width:640px;margin:0 auto;}
+  .head{display:flex;gap:16px;align-items:center;margin-bottom:16px;}
+  .head img{width:64px;height:64px;border-radius:12px;}
+  .head h1{font-size:24px;}
+  .v{color:#ffd740;font-weight:600;}
+  .desc{color:#aab2e6;line-height:1.8;margin-bottom:20px;}
+  .dl-box{background:rgba(0,0,0,.25);border-radius:14px;padding:18px;}
+  .field{margin-bottom:12px;}
+  .field label{display:block;font-size:13px;color:#aab2e6;margin-bottom:5px;}
+  .cs{position:relative;}
+  .cs-head{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 12px;cursor:pointer;font-size:14px;}
+  .cs-head::after{content:" \25BE";color:#aab2e6;}
+  .cs-list{position:absolute;top:calc(100%+4px);left:0;right:0;z-index:200;background:#1c1b3a;border:1px solid rgba(255,255,255,.15);border-radius:10px;display:none;box-shadow:0 8px 24px rgba(0,0,0,.4);}
+  .cs.open .cs-list{display:block;}
+  .cs-opt{padding:10px 12px;cursor:pointer;font-size:14px;}
+  .cs-opt:hover{background:rgba(124,92,255,.35);}
+  .btn{display:block;width:100%;text-align:center;margin-top:16px;padding:13px;border-radius:12px;font-weight:700;background:linear-gradient(90deg,#7c5cff,#00d4ff);color:#fff;text-decoration:none;}
+  .btn.disabled{opacity:.5;pointer-events:none;}
+  .section{background:rgba(0,0,0,.25);border-radius:12px;padding:14px 18px;margin-top:16px;}
+  .section h2{font-size:15px;color:#ffd740;margin-bottom:6px;}
+  .section p{color:#aab2e6;font-size:14px;line-height:1.8;}
+  .other-dl{display:flex;flex-direction:column;gap:8px;}
+  .other-dl a{display:flex;align-items:center;gap:6px;padding:10px 14px;border-radius:10px;background:rgba(124,92,255,.12);border:1px solid rgba(124,92,255,.35);color:#c8c8ff;text-decoration:none;font-size:14px;transition:.2s;}
+  .other-dl a:hover{background:rgba(124,92,255,.25);color:#fff;}
+</style>
+</head>
+<body>
+<div class="nav"><a href="../../home/">🏠 首页</a><a href="../../mods/">🧩 我的模组</a><a href="../../about/">ℹ️ 关于我</a></div>
+<div class="card">
+  <div class="head"><img src="../../assets/images/logo.png" alt="Minecraft 1.21 Music Disc"><div><h1>Minecraft 1.21 Music Disc</h1></div></div>
+  <p class="desc">It&#x27;s a mod that you can listen to the music of new music disc of Minecraft 1.21 \nIf you try to open this website, you will can&#x27;t enter it. Because it&#x27;s empty. §r\n\n这是一个可以听Minecraft 1.21的新音乐唱片的模组。§r\n我把Minecraft 1.21的新音乐唱片移植到1.20了 \n现在，我们可以在1.20听1.21的唱片了 §r\n\n§rMusic made by Mojang.</p>
+  <div class="dl-box" id="download">
+    <h2 style="font-size:16px;color:#ffd740;margin-bottom:14px">⬇ 选择版本下载</h2>
+    <div class="field"><label>Minecraft 版本</label><div class="cs" id="cs-mc"><div class="cs-head"></div><div class="cs-list"></div></div></div>
+    <div class="field"><label>模组版本</label><div class="cs" id="cs-mv"><div class="cs-head"></div><div class="cs-list"></div></div></div>
+    <div class="field"><label>模组加载器</label><div class="cs" id="cs-ld"><div class="cs-head"></div><div class="cs-list"></div></div></div>
+    <a class="btn" id="dlBtn" href="#" download>下载</a>
+  </div>
+  
+  <div class="section"><h2>ℹ️ 可用版本</h2><p>Minecraft 1.20.1 · Forge</p></div>
+  
+</div>
+<script>
+var files={"1.20.1|1.0.0|Forge":"../../assets/files/Minecraft1.21MusicDisc-forge-1.0.0.jar"};
+var allOpts={mc:["1.20.1"],mv:["1.0.0"],ld:["Forge"]};
+function gv(id){return document.getElementById('cs-'+id).getAttribute('data-val');}
+function sv(id,v){var cs=document.getElementById('cs-'+id);cs.setAttribute('data-val',v);cs.querySelector('.cs-head').textContent=v;}
+function findCombo(fid,fv){var ks=Object.keys(files);for(var i=0;i<ks.length;i++){var p=ks[i].split('|');var c={mc:p[0],mv:p[1],ld:p[2]};if(c[fid]===fv)return c;}return null;}
+function render(id){var cs=document.getElementById('cs-'+id),list=cs.querySelector('.cs-list');list.innerHTML='';allOpts[id].forEach(function(v){var o=document.createElement('div');o.className='cs-opt';o.textContent=v;o.setAttribute('data-v',v);o.onclick=function(e){e.stopPropagation();cs.classList.remove('open');refresh(id,v);};list.appendChild(o);});}
+document.querySelectorAll('.cs').forEach(function(cs){cs.querySelector('.cs-head').onclick=function(e){e.stopPropagation();var o=cs.classList.contains('open');document.querySelectorAll('.cs.open').forEach(function(x){x.classList.remove('open');});if(!o)cs.classList.add('open');};});
+document.addEventListener('click',function(){document.querySelectorAll('.cs.open').forEach(function(x){x.classList.remove('open');});});
+function refresh(fid,fv){var c=fid?findCombo(fid,fv)||{mc:gv('mc'),mv:gv('mv'),ld:gv('ld')}:findCombo('mc',allOpts.mc[0])||{mc:allOpts.mc[0],mv:allOpts.mv[0],ld:allOpts.ld[0]};sv('mc',c.mc);sv('mv',c.mv);sv('ld',c.ld);render('mc');render('mv');render('ld');var k=c.mc+'|'+c.mv+'|'+c.ld,h=files[k]||'#',b=document.getElementById('dlBtn');if(h==='#'){b.href='#';b.classList.add('disabled');b.textContent='此组合暂无可下载文件';}else{b.href=h;b.classList.remove('disabled');b.textContent='下载';b.setAttribute('download',h.split('/').pop());}}
+refresh();
+</script>
+</body>
+</html>

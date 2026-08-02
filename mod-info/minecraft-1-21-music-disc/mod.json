@@ -1,0 +1,21 @@
+{
+  "name": "Minecraft 1.21 Music Disc",
+  "slug": "minecraft-1-21-music-disc",
+  "desc": "It's a mod that you can listen to the music of new music disc of Minecraft 1.21 \\nIf you try to open this website, you will can't enter it. Because it's empty. §r\\n\\n这是一个可以听Minecraft 1.21的新音乐唱片的模组。§r\\n我把Minecraft 1.21的新音乐唱片移植到1.20了 \\n现在，我们可以在1.20听1.21的唱片了 §r\\n\\n§rMusic made by Mojang.",
+  "icon": "logo.png",
+  "sections": [
+    {
+      "title": "ℹ️ 可用版本",
+      "body": "Minecraft 1.20.1 · Forge"
+    }
+  ],
+  "downloads": [],
+  "jars": [
+    {
+      "mc": "1.20.1",
+      "mv": "1.0.0",
+      "ld": "Forge",
+      "file": "Minecraft1.21MusicDisc-forge-1.0.0.jar"
+    }
+  ]
+}
