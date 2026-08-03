@@ -1,0 +1,23 @@
+{
+  "name": "Elytra Toggle",
+  "slug": "elytra-toggle",
+  "desc": "一个用于高版本的鞘翅飞行开关器",
+  "icon": "elytra_toggle.png",
+  "sections": [
+    {
+      "title": "ℹ️ 可用版本",
+      "body": "Minecraft 1.21.1 · NeoForge"
+    }
+  ],
+  "downloads": [],
+  "old": false,
+  "tag": {},
+  "jars": [
+    {
+      "mc": "1.21.1",
+      "mv": "1.0.0",
+      "ld": "NeoForge",
+      "file": "elytra_toggle-neoforge-1.21.1-1.0.0.jar"
+    }
+  ]
+}
