@@ -11,7 +11,9 @@
   .nav{text-align:center;margin-bottom:30px;}
   .nav a{color:#f0f0ff;text-decoration:none;padding:9px 20px;border:1px solid rgba(255,255,255,.15);border-radius:999px;margin:0 6px;font-size:14px;}
   .nav a:hover{background:#7c5cff;border-color:transparent;}
-  .card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:32px;max-width:640px;margin:0 auto;}
+  .card{position:relative;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:32px;max-width:640px;margin:0 auto;}
+  .card-badges{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:6px;z-index:2;}
+  .card-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;letter-spacing:1px;color:#fff;background:#ff7a2f;}
   .head{display:flex;gap:16px;align-items:center;margin-bottom:16px;}
   .head img{width:64px;height:64px;border-radius:12px;}
   .head h1{font-size:24px;}
@@ -55,6 +57,7 @@
 
 <div class="nav"><a href="../../home/">🏠 首页</a><a href="../../mods/">🧩 我的模组</a><a href="../../about/">ℹ️ 关于我</a></div>
 <div class="card">
+  
   <div class="head"><img src="../../assets/images/1_21_1_music_discs_logo.png" alt="Minecraft 1.21 Music Disc"><div><h1>Minecraft 1.21 Music Disc</h1></div></div>
   <p class="desc">It&#x27;s a mod that you can listen to the music of new music disc of Minecraft 1.21 <br> If you try to open this website, you will can&#x27;t enter it. Because it&#x27;s empty. <br><br>这是一个可以听Minecraft 1.21的新音乐唱片的模组。<br>我把Minecraft 1.21的新音乐唱片移植到1.20了 <br><span style="color:#55FFFF;">现在，我们可以在1.20听1.21的唱片了<br></span><span style="color:#AA00AA;font-weight:bold;">Have fun! </span><br><br><span style="color:#FFFF55;">Music made by Mojang.</span></p>
   <div class="dl-box" id="download">

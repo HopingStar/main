@@ -11,7 +11,9 @@
   .nav{text-align:center;margin-bottom:30px;}
   .nav a{color:#f0f0ff;text-decoration:none;padding:9px 20px;border:1px solid rgba(255,255,255,.15);border-radius:999px;margin:0 6px;font-size:14px;}
   .nav a:hover{background:#7c5cff;border-color:transparent;}
-  .card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:32px;max-width:640px;margin:0 auto;}
+  .card{position:relative;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:32px;max-width:640px;margin:0 auto;}
+  .card-badges{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:6px;z-index:2;}
+  .card-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;letter-spacing:1px;color:#fff;background:#ff7a2f;}
   .head{display:flex;gap:16px;align-items:center;margin-bottom:16px;}
   .head img{width:64px;height:64px;border-radius:12px;}
   .head h1{font-size:24px;}
@@ -55,6 +57,7 @@
 <div class="old-notice" id="oldNotice"><div class="old-notice-body"><span>⚠️ 你正在浏览旧模组的页面</span><button class="old-notice-close" onclick="closeOldNotice()">✕</button></div><div class="old-notice-bar"><div class="old-notice-fill"></div></div></div>
 <div class="nav"><a href="../../home/">🏠 首页</a><a href="../../mods/">🧩 我的模组</a><a href="../../about/">ℹ️ 关于我</a></div>
 <div class="card">
+  <div class="card-badges"><span class="card-badge old">OLD</span></div>
   <div class="head"><img src="../../assets/images/calamity_mode_extra_logo.png" alt="Calamity Mod Extra"><div><h1>Calamity Mod Extra</h1></div></div>
   <p class="desc">这是一个旧模组，用于<span style="color:#55FFFF;font-weight:bold;">Origin-Otherworld</span>服务器（现已关停）<br>由于<span style="color:#AA0000;font-weight:bold;">灾厄模式</span><span style="color:#00AAAA;font-weight:bold;">([i]Origin-Otherworld Server特有)</span>难度过高，这个模组用于盔甲防爆，但最终并未运用到服务器中，仅测试了2个版本 <br><span style="color:#5555FF;">[i]此服务器的存档文件已被服主打包</span></p>
   <div class="dl-box" id="download">
