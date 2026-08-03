@@ -1,0 +1,23 @@
+{
+  "name": "Chaos Chaos",
+  "slug": "dart-s-try",
+  "desc": "§6§l[远古遗物]\r\n§r§b早期制作的模组，较为抽象",
+  "icon": "chaos_chaos_logo.png",
+  "sections": [
+    {
+      "title": "ℹ️ 可用版本",
+      "body": "Minecraft 1.20.1 · Forge"
+    }
+  ],
+  "downloads": [],
+  "old": true,
+  "tag": {},
+  "jars": [
+    {
+      "mc": "1.20.1",
+      "mv": "1.0.0",
+      "ld": "Forge",
+      "file": "chaos_chaos-1.20.1-1.0.0.jar"
+    }
+  ]
+}
