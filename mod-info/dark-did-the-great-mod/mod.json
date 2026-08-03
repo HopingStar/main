@@ -2,7 +2,7 @@
   "name": "Dart Did The Great Mod",
   "slug": "dark-did-the-great-mod",
   "desc": "这是一个旧模组，用于§5§lSTARFALL§r服务器（现已关停）",
-  "icon": "logo_old_mod1.png",
+  "icon": "chaos_chaos_logo.png",
   "sections": [
     {
       "title": "ℹ️ 可用版本",
@@ -15,6 +15,7 @@
   ],
   "downloads": [],
   "old": true,
+  "tag": {},
   "jars": [
     {
       "mc": "1.20.1",

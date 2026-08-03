@@ -1,7 +1,7 @@
 {
   "name": "Chaos Chaos",
   "slug": "dart-s-try",
-  "desc": "§6§l[远古遗物]\r\n§r§b早期制作的模组，较为抽象",
+  "desc": "§6§l[远古遗物]\r\n§r§b早期制作的模组，较为抽象\r\n§r此模组为最终版本，早期版本已丢失",
   "icon": "chaos_chaos_logo.png",
   "sections": [
     {
@@ -15,9 +15,9 @@
   "jars": [
     {
       "mc": "1.20.1",
-      "mv": "1.0.0",
+      "mv": "1.0.1",
       "ld": "Forge",
-      "file": "chaos_chaos-1.20.1-1.0.0.jar"
+      "file": "chaso_chaos-forge-1.20.1-1.0.1.jar"
     }
   ]
 }
