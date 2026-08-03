@@ -45,13 +45,17 @@
   .old-notice-bar{height:4px;background:rgba(255,255,255,.12);}
   .old-notice-fill{height:100%;width:0%;background:linear-gradient(90deg,#ff7a2f,#ffb380);animation:noticeBar 5s linear forwards;}
   @keyframes noticeBar{from{width:0%;}to{width:100%;}}
+  .old-notice.dl-notice{border-color:rgba(0,212,255,.55);background:rgba(20,45,70,.95);}
+  .old-notice.dl-notice .old-notice-body{color:#bfe9ff;}
+  .old-notice.dl-notice .old-notice-close{color:#7adfff;}
+  .old-notice.dl-notice .old-notice-fill{background:linear-gradient(90deg,#00d4ff,#7adfff);}
 </style>
 </head>
 <body>
 <div class="old-notice" id="oldNotice"><div class="old-notice-body"><span>⚠️ 你正在浏览旧模组的页面</span><button class="old-notice-close" onclick="closeOldNotice()">✕</button></div><div class="old-notice-bar"><div class="old-notice-fill"></div></div></div>
 <div class="nav"><a href="../../home/">🏠 首页</a><a href="../../mods/">🧩 我的模组</a><a href="../../about/">ℹ️ 关于我</a></div>
 <div class="card">
-  <div class="head"><img src="../../assets/images/chaos_chaos_logo.png" alt="Dart Did The Great Mod"><div><h1>Dart Did The Great Mod</h1></div></div>
+  <div class="head"><img src="../../assets/images/logo_old_mod1.png" alt="Dart Did The Great Mod"><div><h1>Dart Did The Great Mod</h1></div></div>
   <p class="desc">这是一个旧模组，用于<span style="color:#AA00AA;font-weight:bold;">STARFALL</span>服务器（现已关停）</p>
   <div class="dl-box" id="download">
     <h2 style="font-size:16px;color:#ffd740;margin-bottom:14px">⬇ 选择版本下载</h2>
@@ -101,7 +105,22 @@ document.getElementById('dlBtn').addEventListener('click',function(e){
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
+  showDlNotice();
 });
+function showDlNotice(){
+  var old=document.getElementById('dlNotice');
+  if(old&&old.parentNode)old.parentNode.removeChild(old);
+  var n=document.createElement('div');n.id='dlNotice';n.className='old-notice dl-notice';
+  n.innerHTML='<div class="old-notice-body"><span>📥 下载已开始</span><button class="old-notice-close" onclick="closeDlNotice()">✕</button></div><div class="old-notice-bar"><div class="old-notice-fill"></div></div>';
+  document.body.appendChild(n);
+  setTimeout(function(){closeDlNotice();},5000);
+}
+function closeDlNotice(){
+  var el=document.getElementById('dlNotice');
+  if(!el)return;
+  el.classList.add('leaving');
+  setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},400);
+}
 setTimeout(function(){closeOldNotice();},5000);function closeOldNotice(){var el=document.getElementById('oldNotice');if(!el)return;el.classList.add('leaving');setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},400);}
 </script>
 </body>
